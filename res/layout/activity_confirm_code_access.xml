@@ -51,8 +51,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button_confirm"
-                android:id="@+id/button_confirm" />
+                android:text="@string/button_new_code"
+                android:id="@+id/button_new_code" />
+            
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_confirm_code"
+                android:id="@+id/button_confirm_code" />
 
             <Button
                 android:layout_width="wrap_content"

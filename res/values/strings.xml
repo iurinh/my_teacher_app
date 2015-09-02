@@ -10,7 +10,7 @@
     <string name="text_view_password">Password: </string>
     <string name="button_new_login">New Login</string>
     <string name="button_access_login">Enter</string>
-    <string name="text_forgor_password">I forgot my password!</string>
+    <string name="text_forgot_password">I forgot my password!</string>
     <string name="title_activity_new_login">NewLoginActivity</string>
     <string name="text_view_title_register">REGISTER</string>
     <string name="text_view_name">Name: </string>
@@ -20,5 +20,6 @@
     <string name="title_activity_confirm_code_access">ConfirmCodeAccessActivity</string>
 	<string name="text_view_title_confirm_code">Confirm the Access Code</string>
     <string name="text_view_code">Code: </string>
-    <string name="button_confirm">Confirm</string>
+    <string name="button_new_code">New code</string>
+    <string name="button_confirm_code">Confirm</string>
 </resources>
