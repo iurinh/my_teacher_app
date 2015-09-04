@@ -22,6 +22,11 @@ public enum EnumToast{
 		public String toString(){
 			return "New code sent for your e-mail";
 		}
+	}, ERROR_DIGGEST(4){
+		@Override
+		public String toString(){
+			return "Error creating the criptography";
+		}
 	};
 
 	private Integer option;
