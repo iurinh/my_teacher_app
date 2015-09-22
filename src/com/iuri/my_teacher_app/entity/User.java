@@ -7,10 +7,10 @@ public class User {
 	private String email;
 	private String password;
 	
-	private Integer getId() {
+	public Integer getId() {
 		return id;
 	}
-	private void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {

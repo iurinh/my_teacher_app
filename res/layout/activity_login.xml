@@ -36,9 +36,9 @@
                 android:text="@string/text_view_login" />
 
             <EditText
-                android:id="@+id/edit_text_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:id="@+id/edit_text_login" />
 
         </LinearLayout>
 
@@ -53,9 +53,9 @@
                 android:text="@string/text_view_password" />
 
             <EditText
-                android:id="@+id/edit_text_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_text_password" />
         </LinearLayout>
         
         <LinearLayout

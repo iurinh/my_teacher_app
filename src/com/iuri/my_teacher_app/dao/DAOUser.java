@@ -3,6 +3,7 @@ package com.iuri.my_teacher_app.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.iuri.my_teacher_app.digest.Digest;
 import com.iuri.my_teacher_app.entity.User;
 
 import android.content.ContentValues;
@@ -46,7 +47,7 @@ public class DAOUser extends SQLiteOpenHelper implements DAO<User>{
 		
 		values.put("name", user.getName());
 		values.put("email", user.getEmail());
-		values.put("password", user.getPassword());
+		values.put("password", new Digest().getDigestMD5(user.getPassword()));
 
 		getWritableDatabase().insert(TABLE, null, values);
 		
@@ -55,8 +56,9 @@ public class DAOUser extends SQLiteOpenHelper implements DAO<User>{
 
 	@Override
 	public void delete(User user) {
-		// TODO Auto-generated method stub
+		String[] ids = {user.getId().toString()};
 		
+		getWritableDatabase().delete(TABLE,"id = ?", ids);
 	}
 
 	@Override
@@ -67,6 +69,21 @@ public class DAOUser extends SQLiteOpenHelper implements DAO<User>{
 
 	@Override
 	public User search(User user) {
+		if(user.getId() == null){
+			String selectLogin = "SELECT * FROM " + TABLE 
+					+ " WHERE name LIKE '" + user.getName() + "'"
+					+ " AND "
+					+ " password LIKE '" + new Digest().getDigestMD5(user.getPassword()) + "'";
+			
+			Cursor c = getReadableDatabase().rawQuery(selectLogin, null);
+			
+			if(c.getCount() == 0) return null;
+			
+			while(c.moveToNext()){
+				user.setId(c.getInt(c.getColumnIndex("id")));
+				user.setEmail(c.getString(c.getColumnIndex("email")));
+			}
+		}
 		return user;
 	}
 
@@ -81,6 +98,7 @@ public class DAOUser extends SQLiteOpenHelper implements DAO<User>{
 		while(c.moveToNext()){
 			User user = new User();
 			
+			user.setId(c.getInt(c.getColumnIndex("id")));
 			user.setName(c.getString(c.getColumnIndex("name")));
 			user.setEmail(c.getString(c.getColumnIndex("email")));
 			user.setPassword(c.getString(c.getColumnIndex("password")));

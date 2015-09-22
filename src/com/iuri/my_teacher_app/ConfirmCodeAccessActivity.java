@@ -31,6 +31,7 @@ public class ConfirmCodeAccessActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(ConfirmCodeAccessActivity.this, NewLoginActivity.class);
 				Toast.makeText(ConfirmCodeAccessActivity.this, EnumToast.CHANGE_PASSWORD.toString(), Toast.LENGTH_LONG).show();
+				intent.putExtra("edit", false);
 				startActivity(intent);
 				finish();
 			}

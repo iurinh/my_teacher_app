@@ -36,9 +36,9 @@
                 android:text="@string/text_view_code" />
 
             <EditText
-                android:id="@+id/edit_text_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_text_code" />
 
         </LinearLayout>
 

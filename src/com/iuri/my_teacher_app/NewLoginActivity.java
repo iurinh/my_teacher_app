@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.iuri.my_teacher_app.dao.DAO;
 import com.iuri.my_teacher_app.dao.DAOUser;
-import com.iuri.my_teacher_app.digest.Digest;
 import com.iuri.my_teacher_app.entity.User;
 import com.iuri.my_teacher_app.enums.EnumToast;
 
@@ -37,6 +36,15 @@ public class NewLoginActivity extends Activity {
 		createActionButtonCancel(findViewById(R.id.button_cancel_register));
 	}
 	
+	private boolean isEdit() {
+		Bundle extras = getIntent().getExtras();
+		
+		if(extras == null) return false;
+		
+		Boolean edit = extras.getBoolean("edit");
+		return edit == null ? false : edit;
+	}
+
 	private boolean validatePassword() {
 		String password = fieldPassword.getText().toString();
 		String confirmPassword = fieldConfirmPassword.getText().toString();
@@ -46,8 +54,12 @@ public class NewLoginActivity extends Activity {
 	private void getFields() {
 		fieldName = 			(EditText) findViewById(R.id.edit_text_name);
 		fieldEmail = 			(EditText) findViewById(R.id.edit_text_email);
-		fieldPassword = 		(EditText) findViewById(R.id.edit_text_password);
-		fieldConfirmPassword = (EditText) findViewById(R.id.edit_text_confirm_password);
+		fieldPassword = 		(EditText) findViewById(R.id.edit_text_password_new_login);
+		fieldConfirmPassword = 	(EditText) findViewById(R.id.edit_text_confirm_password);
+		
+		fieldName.setEnabled(isEdit());
+		fieldEmail.setEnabled(isEdit());
+		if(!isEdit()) fieldPassword.requestFocus();
 	}
 
 	private Button createActionButtonSave(View view) {
@@ -66,9 +78,9 @@ public class NewLoginActivity extends Activity {
 					List<User> users = daoTeste.searchAll();
 					
 					for (User userTeste : users) {
-						Toast.makeText(NewLoginActivity.this, userTeste.getName() + " " + userTeste.getEmail() + " " + userTeste.getPassword(), Toast.LENGTH_LONG).show();
+						Toast.makeText(NewLoginActivity.this, userTeste.getId() + " " + userTeste.getName() + " " + userTeste.getEmail() + " " + userTeste.getPassword(), Toast.LENGTH_LONG).show();
 					}
-					Toast.makeText(NewLoginActivity.this, EnumToast.SAVE_SUCCESSFULL.toString(), Toast.LENGTH_LONG).show();
+					Toast.makeText(NewLoginActivity.this, EnumToast.SAVE_SUCCESSFULL.toString(), Toast.LENGTH_SHORT).show();
 					
 					Intent intent = new Intent(NewLoginActivity.this, LoginActivity.class);
 					startActivity(intent);
@@ -83,15 +95,10 @@ public class NewLoginActivity extends Activity {
 		User user = new User();
 		user.setName(fieldName.getText().toString());
 		user.setEmail(fieldEmail.getText().toString());
-		user.setPassword(encryptPassWord());
+		user.setPassword(fieldPassword.getText().toString());
 		return user;
 	}
 	
-	private String encryptPassWord() {
-		Digest digest = new Digest();
-		return digest.getDigestMD5(fieldPassword.getText().toString(), NewLoginActivity.this);
-	}
-
 	private Button createActionButtonCancel(View view) {
 		Button button = (Button) view;
 		button.setOnClickListener(new OnClickListener() {

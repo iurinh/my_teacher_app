@@ -27,6 +27,16 @@ public enum EnumToast{
 		public String toString(){
 			return "Error creating the criptography";
 		}
+	}, LOGIN_NOT_EXIST(5){
+		@Override
+		public String toString(){
+			return "This login not user";
+		}
+	}, LOGIN_EXIST(6){
+		@Override
+		public String toString(){
+			return "Congratulations! This Login Exist!";
+		}
 	};
 
 	private Integer option;
