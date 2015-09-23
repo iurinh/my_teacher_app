@@ -57,33 +57,65 @@ public class DAOUser extends SQLiteOpenHelper implements DAO<User>{
 	@Override
 	public void delete(User user) {
 		String[] ids = {user.getId().toString()};
-		
 		getWritableDatabase().delete(TABLE,"id = ?", ids);
+		close();
 	}
 
 	@Override
 	public void update(User user) {
-		// TODO Auto-generated method stub
+		ContentValues con = new ContentValues();
+		con.put("name", user.getName());
+		con.put("email", user.getEmail());
+		con.put("password", new Digest().getDigestMD5(user.getPassword()));
 		
+		getWritableDatabase().update(TABLE, con, "id = " + user.getId(), null);
+		close();
 	}
 
 	@Override
 	public User search(User user) {
-		if(user.getId() == null){
-			String selectLogin = "SELECT * FROM " + TABLE 
-					+ " WHERE name LIKE '" + user.getName() + "'"
-					+ " AND "
-					+ " password LIKE '" + new Digest().getDigestMD5(user.getPassword()) + "'";
-			
-			Cursor c = getReadableDatabase().rawQuery(selectLogin, null);
-			
-			if(c.getCount() == 0) return null;
-			
-			while(c.moveToNext()){
-				user.setId(c.getInt(c.getColumnIndex("id")));
-				user.setEmail(c.getString(c.getColumnIndex("email")));
-			}
+		if(user.getId() == null) user = updateForLoginPassword(user);
+		else user = updateForId(user);
+		
+		close();
+		
+		return user;
+	}
+
+	private User updateForId(User user) {
+		String selectUser = "SELECT * FROM " + TABLE 
+				+ " WHERE id = '" + user.getName() + ";";
+		
+		Cursor c = getReadableDatabase().rawQuery(selectUser, null);
+		
+		if(c.getCount() == 0) return null;
+		
+		while(c.moveToNext()){
+			user.setName(c.getString(c.getColumnIndex("name")));
+			user.setEmail(c.getString(c.getColumnIndex("email")));
+			user.setPassword(c.getString(c.getColumnIndex("password")));
 		}
+		
+		c.close();
+		return user;
+	}
+
+	private User updateForLoginPassword(User user) {
+		String selectUser = "SELECT * FROM " + TABLE 
+				+ " WHERE name LIKE '" + user.getName() + "'"
+				+ " AND "
+				+ " password LIKE '" + new Digest().getDigestMD5(user.getPassword()) + "'";
+		
+		Cursor c = getReadableDatabase().rawQuery(selectUser, null);
+		
+		if(c.getCount() == 0) return null;
+		
+		while(c.moveToNext()){
+			user.setId(c.getInt(c.getColumnIndex("id")));
+			user.setEmail(c.getString(c.getColumnIndex("email")));
+		}
+		
+		c.close();
 		return user;
 	}
 
