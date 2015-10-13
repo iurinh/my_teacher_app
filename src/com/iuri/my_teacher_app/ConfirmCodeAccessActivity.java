@@ -1,6 +1,7 @@
 package com.iuri.my_teacher_app;
 
 import com.iuri.my_teacher_app.enums.EnumToast;
+import com.iuri.my_teacher_app.utility.SenderEmail;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -31,7 +32,7 @@ public class ConfirmCodeAccessActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(ConfirmCodeAccessActivity.this, NewLoginActivity.class);
 				Toast.makeText(ConfirmCodeAccessActivity.this, EnumToast.CHANGE_PASSWORD.toString(), Toast.LENGTH_LONG).show();
-				intent.putExtra("edit", false);
+				//intent.putExtra("edit", false);
 				startActivity(intent);
 				finish();
 			}
@@ -44,6 +45,9 @@ public class ConfirmCodeAccessActivity extends Activity {
 		button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				SenderEmail send = new SenderEmail("iurinh@hotmail.com", 1234);
+				Intent intent = send.toSend();
+				ConfirmCodeAccessActivity.this.startActivity(intent);
 				Toast.makeText(ConfirmCodeAccessActivity.this, EnumToast.NEW_CODE_SENT.toString(), Toast.LENGTH_LONG).show();
 			}
 		});

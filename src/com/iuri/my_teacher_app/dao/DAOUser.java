@@ -3,8 +3,8 @@ package com.iuri.my_teacher_app.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.iuri.my_teacher_app.digest.Digest;
 import com.iuri.my_teacher_app.entity.User;
+import com.iuri.my_teacher_app.utility.Digest;
 
 import android.content.ContentValues;
 import android.content.Context;

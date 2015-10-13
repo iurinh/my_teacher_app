@@ -1,4 +1,4 @@
-package com.iuri.my_teacher_app.digest;
+package com.iuri.my_teacher_app.utility;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
