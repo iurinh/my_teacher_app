@@ -1,10 +1,13 @@
 package com.iuri.my_teacher_app.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.iuri.my_teacher_app.entity.School;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -20,14 +23,12 @@ public class DAOSchool extends SQLiteOpenHelper implements DAO<School>{
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		/*StringBuffer sb = new StringBuffer();
+		StringBuffer sb = new StringBuffer();
 		sb.append("CREATE TABLE " + TABLE);
 		sb.append(" ( id INTEGER PRIMARY KEY , ");
-		sb.append("   name TEXT UNIQUE NOT NULL , ");
-		sb.append("   email TEXT UNIQUE NOT NULL , ");
-		sb.append("   password NOT NULL);");
+		sb.append("   name TEXT NOT NULL ); ");
 		
-		db.execSQL(sb.toString());*/
+		db.execSQL(sb.toString());
 	}
 
 	@Override
@@ -38,32 +39,71 @@ public class DAOSchool extends SQLiteOpenHelper implements DAO<School>{
 	
 	@Override
 	public void add(School school) {
-		// TODO Auto-generated method stub
+		ContentValues values = new ContentValues();
 		
+		values.put("name", school.getName());
+
+		getWritableDatabase().insert(TABLE, null, values);
+		
+		close();
 	}
 
 	@Override
 	public void delete(School school) {
-		// TODO Auto-generated method stub
-		
+		String[] ids = {school.getId().toString()};
+		getWritableDatabase().delete(TABLE,"id = ?", ids);
+		close();
 	}
 
 	@Override
 	public void update(School school) {
-		// TODO Auto-generated method stub
+		ContentValues value = new ContentValues();
+		value.put("name", school.getName());
 		
+		getWritableDatabase().update(TABLE, value, "id = " + school.getId(), null);
+		close();
 	}
 
 	@Override
 	public School search(School school) {
-		// TODO Auto-generated method stub
-		return null;
+		String selectUser = "SELECT * FROM " + TABLE 
+				+ " WHERE id = '" + school.getId() + ";";
+		
+		Cursor c = getReadableDatabase().rawQuery(selectUser, null);
+		
+		if(c.getCount() == 0) return null;
+		
+		while(c.moveToNext()){
+			school.setName(c.getString(c.getColumnIndex("name")));
+		}
+		
+		c.close();
+		close();
+		
+		return school;
 	}
 
 	@Override
 	public List<School> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String selectAll = "SELECT * FROM " + TABLE +" ;";
+		
+		Cursor c = getReadableDatabase().rawQuery(selectAll, null);
+		
+		List<School> schools = new ArrayList<School>();
+		
+		while(c.moveToNext()){
+			School school = new School();
+			
+			school.setId(c.getInt(c.getColumnIndex("id")));
+			school.setName(c.getString(c.getColumnIndex("name")));
+			
+			schools.add(school);
+		}
+		
+		c.close();
+		close();
+		
+		return schools;
 	}
 
 }

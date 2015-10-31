@@ -1,20 +1,21 @@
 package com.iuri.my_teacher_app.entity;
 
+/**Escola*/
 public class School {
 
-	private Long id;
-	private String nome;
+	private Integer id;
+	private String name;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String nome) {
+		this.name = nome;
 	}
 }

@@ -1,28 +1,29 @@
 package com.iuri.my_teacher_app.entity;
 
+/**Chamada*/
 public class Call {
 
-	private Long id;
-	private Long classId;
-	private Long studentId;
+	private Integer id;
+	private Integer classId;
+	private Integer studentId;
 	private Boolean presence;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Long getClassId() {
+	public Integer getClassId() {
 		return classId;
 	}
-	public void setClassId(Long classId) {
+	public void setClassId(Integer classId) {
 		this.classId = classId;
 	}
-	public Long getStudentId() {
+	public Integer getStudentId() {
 		return studentId;
 	}
-	public void setStudentId(Long studentId) {
+	public void setStudentId(Integer studentId) {
 		this.studentId = studentId;
 	}
 	public Boolean getPresence() {

@@ -5,28 +5,28 @@ import java.util.Date;
 /**Aula*/
 public class Class {
 
-	private Long id;
-	private Long teamId;
-	private Long dayWeek;
+	private Integer id;
+	private Integer teamId;
+	private Integer dayWeek;
 	private Date hourInit;
 	private Date hourEnd;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Long getTeamId() {
+	public Integer getTeamId() {
 		return teamId;
 	}
-	public void setTeamId(Long teamId) {
+	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
 	}
-	public Long getDayWeek() {
+	public Integer getDayWeek() {
 		return dayWeek;
 	}
-	public void setDayWeek(Long dayWeek) {
+	public void setDayWeek(Integer dayWeek) {
 		this.dayWeek = dayWeek;
 	}
 	public Date getHourInit() {

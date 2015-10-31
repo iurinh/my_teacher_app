@@ -5,23 +5,23 @@ import java.util.Date;
 /**Turma*/
 public class Team {
 
-	private Long id;
-	private Long schoolId;
+	private Integer id;
+	private Integer schoolId;
 	private String serie;
 	private String name;
 	private Date dtInit;
 	private Date dtEnd;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Long getSchoolId() {
+	public Integer getSchoolId() {
 		return schoolId;
 	}
-	public void setSchoolId(Long schoolId) {
+	public void setSchoolId(Integer schoolId) {
 		this.schoolId = schoolId;
 	}
 	public String getSerie() {

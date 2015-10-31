@@ -1,21 +1,22 @@
 package com.iuri.my_teacher_app.entity;
 
+/**Estudante*/
 public class Student {
 
-	private Long id;
-	private Long teamId;
+	private Integer id;
+	private Integer teamId;
 	private String name;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Long getTeamId() {
+	public Integer getTeamId() {
 		return teamId;
 	}
-	public void setTeamId(Long teamId) {
+	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
 	}
 	public String getName() {

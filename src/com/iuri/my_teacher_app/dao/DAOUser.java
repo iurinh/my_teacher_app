@@ -63,28 +63,28 @@ public class DAOUser extends SQLiteOpenHelper implements DAO<User>{
 
 	@Override
 	public void update(User user) {
-		ContentValues con = new ContentValues();
-		con.put("name", user.getName());
-		con.put("email", user.getEmail());
-		con.put("password", new Digest().getDigestMD5(user.getPassword()));
+		ContentValues values = new ContentValues();
+		values.put("name", user.getName());
+		values.put("email", user.getEmail());
+		values.put("password", new Digest().getDigestMD5(user.getPassword()));
 		
-		getWritableDatabase().update(TABLE, con, "id = " + user.getId(), null);
+		getWritableDatabase().update(TABLE, values, "id = " + user.getId(), null);
 		close();
 	}
 
 	@Override
 	public User search(User user) {
-		if(user.getId() == null) user = updateForLoginPassword(user);
-		else user = updateForId(user);
+		if(user.getId() == null) user = searchForLoginPassword(user);
+		else user = searchForId(user);
 		
 		close();
 		
 		return user;
 	}
 
-	private User updateForId(User user) {
+	private User searchForId(User user) {
 		String selectUser = "SELECT * FROM " + TABLE 
-				+ " WHERE id = '" + user.getName() + ";";
+				+ " WHERE id = '" + user.getId() + ";";
 		
 		Cursor c = getReadableDatabase().rawQuery(selectUser, null);
 		
@@ -100,7 +100,7 @@ public class DAOUser extends SQLiteOpenHelper implements DAO<User>{
 		return user;
 	}
 
-	private User updateForLoginPassword(User user) {
+	private User searchForLoginPassword(User user) {
 		String selectUser = "SELECT * FROM " + TABLE 
 				+ " WHERE name LIKE '" + user.getName() + "'"
 				+ " AND "
