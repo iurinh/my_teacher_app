@@ -25,7 +25,7 @@ public class DAOSchool extends SQLiteOpenHelper implements DAO<School>{
 	public void onCreate(SQLiteDatabase db) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("CREATE TABLE " + TABLE);
-		sb.append(" ( id INTEGER PRIMARY KEY , ");
+		sb.append(" ( id INTEGER PRIMARY KEY AUTOINCREMENT, ");
 		sb.append("   name TEXT NOT NULL ); ");
 		
 		db.execSQL(sb.toString());

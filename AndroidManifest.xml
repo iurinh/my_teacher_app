@@ -14,9 +14,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
-             <intent-filter>
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,6 +29,14 @@
         <activity
             android:name=".ConfirmCodeAccessActivity"
             android:label="@string/title_activity_confirm_code_access" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".SchoolRegisterActivity"
+            android:label="@string/title_activity_school_register" >
         </activity>
     </application>
 

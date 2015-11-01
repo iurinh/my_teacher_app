@@ -13,14 +13,23 @@
     <string name="button_access_login">Enter</string>
     <string name="text_forgot_password">I forgot my password!</string>
     <string name="title_activity_new_login">NewLoginActivity</string>
-    <string name="text_view_title_register">REGISTER</string>
+    <string name="title_activity_register">REGISTER</string>
     <string name="text_view_name">Name: </string>
     <string name="text_view_email">E-mail: </string>
     <string name="button_save">Save</string>
     <string name="button_cancel">Cancel</string>
     <string name="title_activity_confirm_code_access">ConfirmCodeAccessActivity</string>
-	<string name="text_view_title_confirm_code">Confirm the Access Code</string>
+    <string name="text_view_title_confirm_code">Confirm the Access Code</string>
     <string name="text_view_code">Code: </string>
     <string name="button_new_code">New code</string>
     <string name="button_confirm_code">Confirm</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="text_view_welcome">Welcome</string>
+    <string name="button_to_do_call">Do call</string>
+    <string name="button_to_register">To register</string>
+    <string name="button_search_absence">Search absence</string>
+    <string name="title_activity_school_register">School Register</string>
+    <string name="button_add_other_school">Add Other School</string>
+    <string name="button_add_team">Add Team</string>
+
 </resources>

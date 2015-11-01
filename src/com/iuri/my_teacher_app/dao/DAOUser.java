@@ -27,7 +27,7 @@ public class DAOUser extends SQLiteOpenHelper implements DAO<User>{
 	public void onCreate(SQLiteDatabase db) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("CREATE TABLE " + TABLE);
-		sb.append(" ( id INTEGER PRIMARY KEY , ");
+		sb.append(" ( id INTEGER PRIMARY KEY AUTOINCREMENT, ");
 		sb.append("   name TEXT UNIQUE NOT NULL , ");
 		sb.append("   email TEXT UNIQUE NOT NULL , ");
 		sb.append("   password NOT NULL);");
