@@ -48,7 +48,9 @@ public class ConfirmCodeAccessActivity extends Activity {
 				SenderEmail send = new SenderEmail("iurinh@hotmail.com", 1234);
 				Intent intent = send.toSend();
 				ConfirmCodeAccessActivity.this.startActivity(intent);
+				
 				Toast.makeText(ConfirmCodeAccessActivity.this, EnumToast.NEW_CODE_SENT.toString(), Toast.LENGTH_LONG).show();
+				//Toast.makeText(ConfirmCodeAccessActivity.this, EnumToast.ERROR_SENDING_NEW_CODE.toString(), Toast.LENGTH_LONG).show();
 			}
 		});
 		return button;

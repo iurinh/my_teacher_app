@@ -30,12 +30,22 @@ public enum EnumToast{
 	}, LOGIN_NOT_EXIST(5){
 		@Override
 		public String toString(){
-			return "This login not user";
+			return "This login not exist";
 		}
 	}, LOGIN_EXIST(6){
 		@Override
 		public String toString(){
 			return "Congratulations! This Login Exist!";
+		}
+	}, DO_NOT_EQUAL_PASSWORD(7){
+		@Override
+		public String toString(){
+			return "The 'password' and 'confirm password' fields need to be equals";
+		}
+	}, ERROR_SENDING_NEW_CODE(8){
+		@Override
+		public String toString(){
+			return "Error sending new code by email";
 		}
 	};
 

@@ -68,29 +68,36 @@ public class NewLoginActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				if(validatePassword()) {
-					
-					User user = createUser();
-
-					DAO<User> dao = new DAOUser(NewLoginActivity.this);
-					dao.add(user);
-					
-					DAO<User> daoTeste = new DAOUser(NewLoginActivity.this);
-					List<User> users = daoTeste.searchAll();
-					
-					for (User userTeste : users) {
-						Toast.makeText(NewLoginActivity.this, userTeste.getId() + " " + userTeste.getName() + " " + userTeste.getEmail() + " " + userTeste.getPassword(), Toast.LENGTH_LONG).show();
-					}
-					Toast.makeText(NewLoginActivity.this, EnumToast.SAVE_SUCCESSFULL.toString(), Toast.LENGTH_SHORT).show();
-					
-					Intent intent = new Intent(NewLoginActivity.this, LoginActivity.class);
-					startActivity(intent);
-					finish();
+					Toast.makeText(NewLoginActivity.this,""+ fieldPassword.getText().toString().equals(fieldConfirmPassword.getText().toString()), Toast.LENGTH_SHORT).show();
+					if (! fieldPassword.getText().toString().equals(fieldConfirmPassword.getText().toString()))
+						Toast.makeText(NewLoginActivity.this, EnumToast.DO_NOT_EQUAL_PASSWORD.toString(), Toast.LENGTH_SHORT).show();
+					else 
+						save();
 				}
 			}
 		});
 		return button;
 	}
 
+	private void save() {
+		User user = createUser();
+
+		DAO<User> dao = new DAOUser(NewLoginActivity.this);
+		dao.add(user);
+		
+		DAO<User> daoTeste = new DAOUser(NewLoginActivity.this);
+		List<User> users = daoTeste.searchAll();
+		
+		for (User userTeste : users) {
+			Toast.makeText(NewLoginActivity.this, userTeste.getId() + " " + userTeste.getName() + " " + userTeste.getEmail() + " " + userTeste.getPassword(), Toast.LENGTH_LONG).show();
+		}
+		Toast.makeText(NewLoginActivity.this, EnumToast.SAVE_SUCCESSFULL.toString(), Toast.LENGTH_SHORT).show();
+		
+		Intent intent = new Intent(NewLoginActivity.this, LoginActivity.class);
+		startActivity(intent);
+		finish();
+	}
+	
 	private User createUser() {
 		User user = new User();
 		user.setName(fieldName.getText().toString());
