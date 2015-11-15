@@ -6,6 +6,7 @@ import com.iuri.my_teacher_app.entity.School;
 import com.iuri.my_teacher_app.enums.EnumToast;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SchoolRegisterActivity extends Activity {
@@ -27,6 +29,8 @@ public class SchoolRegisterActivity extends Activity {
 		getFields();
 		
 		createActionButtonSave(findViewById(R.id.button_save_new_school));
+		createActionButtonNewSchool(findViewById(R.id.button_add_other_school));
+		createActionButtonAddTeam(findViewById(R.id.button_add_team));
 	}
 
 	private Button createActionButtonSave(View view) {
@@ -44,9 +48,31 @@ public class SchoolRegisterActivity extends Activity {
 		});
 		return button;
 	}
+	
+	private Button createActionButtonNewSchool(View view) {
+		Button button = (Button) view;
+		button.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				fieldName.setText("");
+			}
+		});
+		return button;
+	}
+	
+	private void createActionButtonAddTeam(View view) {
+		TextView textView = (TextView) view;
+		textView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(SchoolRegisterActivity.this, TeamRegisterActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+	}
 
 	private School createSchool() {
-		
 		School school = new School();
 		school.setName(fieldName.getText().toString());
 		

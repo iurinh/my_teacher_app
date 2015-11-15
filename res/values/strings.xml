@@ -31,5 +31,10 @@
     <string name="title_activity_school_register">School Register</string>
     <string name="button_add_other_school">Add Other School</string>
     <string name="button_add_team">Add Team</string>
-
+    <string name="title_activity_team_register">Team Register</string>
+    <string name="text_view_serie">Serie: </string>
+	<string name="text_view_first_day">First Day: </string>
+	<string name="text_view_last_day">Last Day: </string>
+ 	<string name="button_add_other_team">Add Other Team</string>
+ 	<string name="button_add_class">Add Class</string>
 </resources>

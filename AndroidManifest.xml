@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="14" />
 
     <application
@@ -37,6 +37,10 @@
         <activity
             android:name=".SchoolRegisterActivity"
             android:label="@string/title_activity_school_register" >
+        </activity>
+        <activity
+            android:name=".TeamRegisterActivity"
+            android:label="@string/title_activity_team_register" >
         </activity>
     </application>
 
