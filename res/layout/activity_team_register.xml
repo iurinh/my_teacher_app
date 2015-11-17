@@ -72,10 +72,34 @@
                 android:layout_height="wrap_content"
                 android:text="@string/text_view_first_day" />
 
-            <DatePicker
+            <EditText
+                android:id="@+id/edit_text_team_first_day"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" 
-                android:id="@+id/edit_date_picker_view_first_day" />
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:editable="false"
+                android:focusable="false" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_view_last_day" />
+
+            <EditText
+                android:id="@+id/edit_text_team_last_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:editable="false"
+                android:focusable="false" />
+            
         </LinearLayout>
         
         <LinearLayout

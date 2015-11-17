@@ -18,6 +18,7 @@
     <string name="text_view_email">E-mail: </string>
     <string name="button_save">Save</string>
     <string name="button_cancel">Cancel</string>
+    <string name="button_ok">Ok</string>
     <string name="title_activity_confirm_code_access">ConfirmCodeAccessActivity</string>
     <string name="text_view_title_confirm_code">Confirm the Access Code</string>
     <string name="text_view_code">Code: </string>
